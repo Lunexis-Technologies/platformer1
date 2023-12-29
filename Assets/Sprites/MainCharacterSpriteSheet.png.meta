@@ -351,7 +351,7 @@ TextureImporter:
       213: 8471455079895033611
     second: MainCharacterSpriteSheet_115
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -368,10 +368,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -410,6 +412,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -421,6 +425,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -433,6 +438,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -445,6 +451,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -2539,9 +2559,108 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      MainCharacterSpriteSheet_0: -8937519372415508627
+      MainCharacterSpriteSheet_1: -1575945165858570935
+      MainCharacterSpriteSheet_10: -6998304695714747052
+      MainCharacterSpriteSheet_11: 1410769445965637910
+      MainCharacterSpriteSheet_12: -5153440177027633616
+      MainCharacterSpriteSheet_13: -8668753851222249039
+      MainCharacterSpriteSheet_14: -194453833806043032
+      MainCharacterSpriteSheet_15: 7591713624797030877
+      MainCharacterSpriteSheet_16: -362985150601434852
+      MainCharacterSpriteSheet_17: -4113789870867815372
+      MainCharacterSpriteSheet_18: 6485098733106354013
+      MainCharacterSpriteSheet_19: 2572972232881859050
+      MainCharacterSpriteSheet_2: -3671287798915811453
+      MainCharacterSpriteSheet_20: -342485510684612095
+      MainCharacterSpriteSheet_21: 6501393791323935401
+      MainCharacterSpriteSheet_22: 7893472031228980085
+      MainCharacterSpriteSheet_23: 4997530671781470273
+      MainCharacterSpriteSheet_24: -4650079162558997556
+      MainCharacterSpriteSheet_25: 8453661311107072913
+      MainCharacterSpriteSheet_26: -273136132418801229
+      MainCharacterSpriteSheet_27: -3565737901276216338
+      MainCharacterSpriteSheet_28: -6242212833769736346
+      MainCharacterSpriteSheet_29: -1441518426121303479
+      MainCharacterSpriteSheet_3: -6665004546491895094
+      MainCharacterSpriteSheet_30: 6944620278293968574
+      MainCharacterSpriteSheet_31: -4599647633450007042
+      MainCharacterSpriteSheet_32: -8971276538864082537
+      MainCharacterSpriteSheet_33: 1203165920457645362
+      MainCharacterSpriteSheet_34: -3827020219027668361
+      MainCharacterSpriteSheet_35: 1827799931878555995
+      MainCharacterSpriteSheet_36: 2074645474325274719
+      MainCharacterSpriteSheet_37: 485517846096073377
+      MainCharacterSpriteSheet_38: 6334752185017547896
+      MainCharacterSpriteSheet_39: 7037032617849813471
+      MainCharacterSpriteSheet_4: -6751768909108815887
+      MainCharacterSpriteSheet_40: 8374223380072595689
+      MainCharacterSpriteSheet_41: -5797768398382328012
+      MainCharacterSpriteSheet_42: -7979830300618560828
+      MainCharacterSpriteSheet_43: 3996373466814342154
+      MainCharacterSpriteSheet_44: -2987223781057666037
+      MainCharacterSpriteSheet_45: 1971994443138521264
+      MainCharacterSpriteSheet_46: -4211832651745462024
+      MainCharacterSpriteSheet_47: 7205608245750401493
+      MainCharacterSpriteSheet_48: 4518650130825590553
+      MainCharacterSpriteSheet_49: 3537723589301881966
+      MainCharacterSpriteSheet_5: 325462781885506814
+      MainCharacterSpriteSheet_50: -2751141050179217666
+      MainCharacterSpriteSheet_51: 5359781566440415988
+      MainCharacterSpriteSheet_52: -5912719360347059885
+      MainCharacterSpriteSheet_53: 5183662647368218363
+      MainCharacterSpriteSheet_54: 9191312457812551135
+      MainCharacterSpriteSheet_55: -2127120423421832240
+      MainCharacterSpriteSheet_56: 3935332599429548157
+      MainCharacterSpriteSheet_57: 2478414263890978853
+      MainCharacterSpriteSheet_58: -5682107919198601745
+      MainCharacterSpriteSheet_59: 6489419309842613740
+      MainCharacterSpriteSheet_6: -319715914705559410
+      MainCharacterSpriteSheet_60: 8000592102696919244
+      MainCharacterSpriteSheet_61: -5787626226681638920
+      MainCharacterSpriteSheet_62: -270038379741718510
+      MainCharacterSpriteSheet_63: 5578925117854904443
+      MainCharacterSpriteSheet_64: 3947816048939046057
+      MainCharacterSpriteSheet_65: 8723722700941062728
+      MainCharacterSpriteSheet_66: 5460973744901115078
+      MainCharacterSpriteSheet_67: -8887845983577149752
+      MainCharacterSpriteSheet_68: -4646973607974618927
+      MainCharacterSpriteSheet_69: 3305418122867254853
+      MainCharacterSpriteSheet_7: 8087522066291940849
+      MainCharacterSpriteSheet_70: 8512595439511922449
+      MainCharacterSpriteSheet_71: 2188774139276306817
+      MainCharacterSpriteSheet_72: -1331867890166195582
+      MainCharacterSpriteSheet_73: -2476920512966752531
+      MainCharacterSpriteSheet_74: -8512392545148185674
+      MainCharacterSpriteSheet_75: 2229078983601668904
+      MainCharacterSpriteSheet_76: -5391367030869594607
+      MainCharacterSpriteSheet_77: -563287942866334449
+      MainCharacterSpriteSheet_78: 464362409526760272
+      MainCharacterSpriteSheet_79: -6174534960388314183
+      MainCharacterSpriteSheet_8: 910814839557781801
+      MainCharacterSpriteSheet_80: -284172274326605018
+      MainCharacterSpriteSheet_81: -6860776400008123017
+      MainCharacterSpriteSheet_82: 522255382762178674
+      MainCharacterSpriteSheet_83: 6303629180351744406
+      MainCharacterSpriteSheet_84: 478998231054711779
+      MainCharacterSpriteSheet_85: -4125877014552624758
+      MainCharacterSpriteSheet_86: -8589977131127730205
+      MainCharacterSpriteSheet_87: 6843728162877587538
+      MainCharacterSpriteSheet_88: -2396276965100224775
+      MainCharacterSpriteSheet_89: 8650123788560680034
+      MainCharacterSpriteSheet_9: 7853587829087426308
+      MainCharacterSpriteSheet_90: -792169942750190655
+      MainCharacterSpriteSheet_91: -430706253271278406
+      MainCharacterSpriteSheet_92: 7172988809270096527
+      MainCharacterSpriteSheet_93: 7818380103993374722
+      MainCharacterSpriteSheet_94: 6326294606937496290
+      MainCharacterSpriteSheet_95: -439330492501658996
+      MainCharacterSpriteSheet_96: 662553925001439093
+      MainCharacterSpriteSheet_97: -3326155215400868717
+      MainCharacterSpriteSheet_98: -5934138018921887056
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

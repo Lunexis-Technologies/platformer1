@@ -5,39 +5,62 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
 	[SerializeField]
-	private Vector2 velocity; //players x, y velocity
+	Vector2 velocity; //players x, y velocity
 	public bool isGrounded; //is grounded
 	public bool isJumping; // isJumping
-	public int time; //time of jump (in frames 1 jump = 60 frames)
+	public float speed = 2f;
+	[SerializeField] public Rigidbody2D rb;
+	public Transform tf;
+	
+	
+	int time; //time of jump (in frames 1 jump = 60 frames)
 	public int timePerJump; //this is the time per a jump. out of 60
-	public int jumpState = 1;
+	int jumpState = 1;
+	
+	
+
+	public Animator animator;
+	public bool facingRight = true;
+	public float horizMovement;
+
 	void Update()
 	{
 		Vector2 playerLocation = GetComponent<Transform>().position;
-		if (Input.GetKey(KeyCode.A)) //left
-		{
-			playerLocation.x -= velocity.x * Time.deltaTime;
-			GetComponent<Transform>().position = playerLocation;
+		
 
+		horizMovement = Input.GetAxisRaw("Horizontal");
+
+		playerLocation.x += horizMovement * speed * Time.deltaTime;
+		GetComponent<Transform>().position = playerLocation;
+
+		
+
+		// Set animator condition
+		animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+		animator.SetBool(press_shift);
+
+
+		// Flip sprite when sprite direction and movement direction are different
+		if(horizMovement < 0 && facingRight) {
+			facingRight = !facingRight;
+
+			// Change local scale
+			Vector3 scale = tf.localScale;
+			scale.x *= -1;
+			tf.localScale = scale; 
+		}
+		else if (horizMovement > 0 && !facingRight) {
+			facingRight = !facingRight;
+
+			// Change local scale
+			Vector3 scale = tf.localScale;
+			scale.x *= -1;
+			tf.localScale = scale; 
 		}
 
-		if (Input.GetKey(KeyCode.D)) //right
-		{
-			playerLocation.x += velocity.x * Time.deltaTime;
-			GetComponent<Transform>().position = playerLocation;
-		}
-		if (Input.GetKey(KeyCode.S)) //down 
-		{
-			if (isJumping && time > 3)
-			{
+		if
 
-				Vector2 v = GetComponent<Rigidbody2D>().velocity;
-				v.y -= velocity.y * Time.deltaTime;
-				jumpState = 2;
-				GetComponent<Rigidbody2D>().velocity = v;
-			}
 
-		}
 		if (Input.GetKey(KeyCode.Space)) //jump
 		{
 			if (timePerJump < 60)
@@ -57,35 +80,40 @@ public class Controller : MonoBehaviour
 		}
 
 	}
-	/// <summary>
-	/// handles the jump of the player
-	/// uses state machine. 
-	/// 1st state is jumping 2nd state is falling. 
-	/// we can add a 3rd state so it can make the jumps more like a "Sine wave" rather than sharp. 
-	/// </summary>
-	/// <param name="estimateFrames"> estimated time of the Jump. either 60 </param>
-	/// <param name="playerLocation"></param> location of the player<summary>
+	
+/*
+	void FixedUpdate() {
+		float targetVelocity = horizMovement * speed * Time.deltaTime;
+		rb.velocity = new Vector2 (targetVelocity, rb.velocity.y);
+	}
+*/
+	
 	
 	private void HandleJump(int estimateFrames, Vector2 playerLocation)
 	{
 		Vector2 v = GetComponent<Rigidbody2D>().velocity; //RB velocity
 
-		if (jumpState == 1)
+		if (jumpState == 1) //jumping
 		{
 			if (time >= estimateFrames / 2) //change to the falling state
 			{
 				jumpState = 2; //commit from neo-vim
 				return;
 			}
-			//jumping
-			playerLocation.y +=  velocity.y * Time.deltaTime + ((9.8f*(Time.deltaTime*Time.deltaTime))/2);
+			
+			// position_y = y + vt + 0.5gt^2 
+			// the += removes the need for a position variable
+			playerLocation.y +=  velocity.y * Time.deltaTime + ((9.8f*(Time.deltaTime*Time.deltaTime))/2);	
+			// velocity_final = v_init + at
 			v.y += velocity.y * Time.deltaTime + ((9.8f*(Time.deltaTime*Time.deltaTime))/2);
+			
+			// Update components
 			GetComponent<Transform>().position = playerLocation;
 			GetComponent<Rigidbody2D>().velocity = v;
 		}
-		else if (jumpState == 2)
+		else if (jumpState == 2) //falling
 		{
-			//falling
+			// same as state1, but -= this time
 			playerLocation.y -= velocity.y * Time.deltaTime + ((9.8f*(Time.deltaTime*Time.deltaTime))/2);
 
 			v.y = (velocity.y - v.y) * Time.deltaTime + ((9.8f*(Time.deltaTime*Time.deltaTime))/2); //velocity*time + ((G * time^2)/2) good formula for jumps
@@ -136,5 +164,9 @@ public class Controller : MonoBehaviour
 			}
 		}
 	}
+	
+
+
+
 	
 }
