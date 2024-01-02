@@ -6,15 +6,16 @@ public class Controller : MonoBehaviour
 {
 	[SerializeField]
 	Vector2 velocity; //players x, y velocity
-	public bool isGrounded; //is grounded
-	public bool isJumping; // isJumping
+	bool isGrounded; //is grounded
+	bool isJumping; // isJumping
 	public float speed = 2f;
 	[SerializeField] public Rigidbody2D rb;
 	public Transform tf;
+	public float cur_velocity;
 	
 	
 	int time; //time of jump (in frames 1 jump = 60 frames)
-	public int timePerJump; //this is the time per a jump. out of 60
+	int timePerJump; //this is the time per a jump. out of 60
 	int jumpState = 1;
 	
 	
@@ -29,38 +30,32 @@ public class Controller : MonoBehaviour
 		
 
 		horizMovement = Input.GetAxisRaw("Horizontal");
+		animator.ResetTrigger("Dash");
 
-		playerLocation.x += horizMovement * speed * Time.deltaTime;
-		GetComponent<Transform>().position = playerLocation;
 
-		
+		//playerLocation.x += horizMovement * speed * Time.deltaTime;
+		float targetVelocity = horizMovement * speed;
+		rb.velocity = new Vector2 (targetVelocity, rb.velocity.y);
+
+		cur_velocity = rb.velocity.x;
 
 		// Set animator condition
 		animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-		animator.SetBool(press_shift);
+		//animator.SetBool(press_shift);
 
+		
 
 		// Flip sprite when sprite direction and movement direction are different
 		if(horizMovement < 0 && facingRight) {
-			facingRight = !facingRight;
-
-			// Change local scale
-			Vector3 scale = tf.localScale;
-			scale.x *= -1;
-			tf.localScale = scale; 
+			FlipSprite();
 		}
 		else if (horizMovement > 0 && !facingRight) {
-			facingRight = !facingRight;
-
-			// Change local scale
-			Vector3 scale = tf.localScale;
-			scale.x *= -1;
-			tf.localScale = scale; 
+			FlipSprite();
 		}
-
-		if
-
-
+		
+				
+		
+		GetComponent<Transform>().position = playerLocation;
 		if (Input.GetKey(KeyCode.Space)) //jump
 		{
 			if (timePerJump < 60)
@@ -81,13 +76,27 @@ public class Controller : MonoBehaviour
 
 	}
 	
-/*
-	void FixedUpdate() {
-		float targetVelocity = horizMovement * speed * Time.deltaTime;
-		rb.velocity = new Vector2 (targetVelocity, rb.velocity.y);
+	bool dash;
+	private void FixedUpdate() {
+
+		if (Input.GetKey(KeyCode.LeftShift))
+		{
+			float dashVelocity = horizMovement * speed * 10;
+			rb.velocity = new Vector2 (dashVelocity, rb.velocity.y);
+			animator.SetTrigger("Dash");
+		}
 	}
-*/
+
+
 	
+	private void FlipSprite() {
+		facingRight = !facingRight;
+
+		// Change local scale
+		Vector3 scale = tf.localScale;
+		scale.x *= -1;
+		tf.localScale = scale; 
+	}
 	
 	private void HandleJump(int estimateFrames, Vector2 playerLocation)
 	{

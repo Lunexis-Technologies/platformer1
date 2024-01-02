@@ -395,8 +395,11 @@ MonoBehaviour:
   isJumping: 1
   speed: 2
   rb: {fileID: 1696050490}
+  tf: {fileID: 1696050487}
   timePerJump: 21
   animator: {fileID: 1696050491}
+  facingRight: 1
+  horizMovement: 0
 --- !u!61 &1696050489
 BoxCollider2D:
   m_ObjectHideFlags: 0
